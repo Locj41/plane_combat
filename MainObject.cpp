@@ -15,7 +15,7 @@ MainObject::~MainObject() {
 	;
 }
 
-void MainObject::handleInputAction(SDL_Event event) {
+void MainObject::handleInputAction(SDL_Event event, Mix_Chunk* bullet_sound[2]) {
 	if (event.type == SDL_KEYDOWN) {
 		switch (event.key.keysym.sym)
 		{
@@ -61,11 +61,13 @@ void MainObject::handleInputAction(SDL_Event event) {
 			p_amo->setWidthHeight(WIDTH_LASER, HEIGHT_LASER);
 			p_amo->load("laser.png");
 			p_amo->set_type(AmoObject::AmoType::LASER);
+			Mix_PlayChannel(-1, bullet_sound[0],0);
 		}
 		else if (event.button.button == SDL_BUTTON_RIGHT) {
 			p_amo->setWidthHeight(WIDTH_SPHERE, HEIGHT_SPHERE);
 			p_amo->load("sphere.png");
 			p_amo->set_type(AmoObject::AmoType::SPHERE);
+			Mix_PlayChannel(-1, bullet_sound[1], 0);
 		}
 
 		p_amo->setRect(this->rect_.x + this->rect_.w - 40, this->rect_.y + this->rect_.h*0.5 + 10);

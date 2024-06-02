@@ -25,7 +25,7 @@ public:
 		return p_amo_list;
 	}
 	void handleMove();
-	void handleInputAction(SDL_Event event);
+	void handleInputAction(SDL_Event event, Mix_Chunk* bullet_sound[2]);
 	void Fire();
 	void removeAmo(const int& index);
 };

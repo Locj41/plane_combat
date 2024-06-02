@@ -44,7 +44,7 @@ void ThreatObject::initAmo(AmoObject* amo) {
 	if (amo) {
 		bool ret = amo->load("sphere1.png");
 			if (ret) {
-				amo->set_is_move(true);
+				amo->set_is_move(false);
 				amo->setWidthHeight(WIDTH_SPHERE, HEIGHT_SPHERE);
 				amo->set_type(AmoObject::AmoType::SPHERE);
 				amo->setRect(rect_.x, rect_.y + rect_.h * 0.5);
@@ -61,12 +61,14 @@ void ThreatObject::makeAmo( const int& x_limit, const int& y_limit) {
 			if (p_amo->get_is_move()) {
 				if (this->rect_.x <= SCREEN_WIDTH) {
 					p_amo->show(g_screen);
+					p_amo->handleMoveRightToLeft();
 				}
-				p_amo->handleMoveRightToLeft();
 			}
 			else {
 				p_amo->setRect(rect_.x, rect_.y + rect_.h * 0.5);
-				p_amo->set_is_move(true);
+				if (this->rect_.x <= SCREEN_WIDTH) {
+					p_amo->set_is_move(true);
+				}
 			}
 		}
 	}

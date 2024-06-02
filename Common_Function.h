@@ -5,7 +5,7 @@
 #include<string>
 #include<SDL.h>
 #include<SDL_image.h>
-
+#include<SDL_mixer.h>
 
 #undef main
 
@@ -13,6 +13,8 @@ extern SDL_Surface* g_object;
 extern SDL_Surface* g_screen;
 extern SDL_Surface* g_background;
 extern SDL_Event g_event;
+extern Mix_Chunk* g_sound_bullet[2];
+extern Mix_Chunk* g_sound_exp[2];
 
 
 const int BACKGROUND_WIDTH = 4800;
